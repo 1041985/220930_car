@@ -15,8 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import member.model.MemberBean;
 import member.model.MemberDao;
-import personalQuestion.model.PersonalQuestionBean;
-import personalQuestion.model.PersonalQuestionDao;
 import requestAuthority.model.requestAuthorityDao;
 import utility.Paging;
 
@@ -53,7 +51,7 @@ public class MemberListController {
 		
 		int result = radao.getCount();
 		
-		System.out.println("¾îµå¹ÎÀÌ °ü¸®ÇÏ´Â È¸¿ø ¼ö : " + lists.size());
+		System.out.println("ì–´ë“œë¯¼ì´ ê´€ë¦¬í•˜ëŠ” íšŒì› ìˆ˜ : " + lists.size());
 		mav.addObject("result", result);
 		mav.addObject("lists",lists);
 		mav.addObject("pageInfo",pageInfo);

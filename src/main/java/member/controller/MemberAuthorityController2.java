@@ -48,7 +48,7 @@ public class MemberAuthorityController2 {
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter writer = response.getWriter();
 				writer.println("<script type='text/javascript'>");
-				writer.println("alert('±ÇÇÑÀ» °¡Áö°í ÀÖÁö ¾Ê½À´Ï´Ù'); history.go(-1);");
+				writer.println("alert('ê¶Œí•œì„ ê°€ì§€ê³  ìˆì§€ ì•ŠìŠµë‹ˆë‹¤'); history.go(-1);");
 				writer.println("</script>");
 				writer.flush();
 				

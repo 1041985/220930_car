@@ -16,7 +16,6 @@ import car.model.CarBean;
 import car.model.CarDao;
 import category.model.CategoryBean;
 import category.model.CategoryDao;
-import utility2.Paging2;
 
 @Controller
 public class MainController {
@@ -39,9 +38,9 @@ public class MainController {
       List<CategoryBean> comLists = catedao.getComList();
    
 		
-		System.out.println("¡¶πﬂ");
+		System.out.println("Ï†úÎ∞ú");
 		List<CarBean> lists = cdao.selectAllCarInMain();
-System.out.println("µ«∂Û");
+System.out.println("ÎêòÎùº");
 		model.addAttribute("lists", lists);
       model.addAttribute("modLists", modLists);
       model.addAttribute("comLists", comLists);

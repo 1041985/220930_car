@@ -38,21 +38,21 @@ public class MemberFindIdController {
 			HttpServletResponse response
 			) throws IOException {
 		
-		//alert ³»º¸³»´Âµ¥ ÇÑ±ÛÃ³¸®
+		//alert ë‚´ë³´ë‚´ëŠ”ë° í•œê¸€ì²˜ë¦¬
 		response.setContentType("text/html; charset=UTF-8");
 				
 		MemberBean mb = memberDao.searchIdByBean(member);
 		PrintWriter out = response.getWriter();
-		// °¡ÀÔµÈ ¾ÆÀÌµğ°¡ ¾øÀ¸¸é
+		// ê°€ì…ëœ ì•„ì´ë””ê°€ ì—†ìœ¼ë©´
 		if(mb == null) {
-			out.print("<script>alert('µî·ÏµÇÁö ¾ÊÀº °èÁ¤ÀÔ´Ï´Ù.'); history.back(-1);</script>");
+			out.print("<script>alert('ë“±ë¡ë˜ì§€ ì•Šì€ ê³„ì •ì…ë‹ˆë‹¤.'); history.back(-1);</script>");
 			out.close();
 		
 		}
 		else {
 			sendEmail(mb, "findpw");
 			
-			out.print("<script>alert('ÀÌ¸ŞÀÏ·Î ¾ÆÀÌµğ¸¦ ¹ß¼ÛÇÏ¿´½À´Ï´Ù.'); location.href='login.mem'</script>");
+			out.print("<script>alert('ì´ë©”ì¼ë¡œ ì•„ì´ë””ë¥¼ ë°œì†¡í•˜ì˜€ìŠµë‹ˆë‹¤.'); location.href='login.mem'</script>");
 			out.close();
 			
 		}
@@ -62,30 +62,30 @@ public class MemberFindIdController {
 	
 	
 	public void sendEmail(MemberBean mbean, String div ) {
-		// Mail Server ¼³Á¤
+		// Mail Server ì„¤ì •
 		String charSet = "utf-8";
-		String hostSMTP = "smtp.gmail.com"; //³×ÀÌ¹ö smtp.naver.com //smtp.gmail.com
+		String hostSMTP = "smtp.gmail.com"; //ë„¤ì´ë²„ smtp.naver.com //smtp.gmail.com
 		String hostSMTPid = "2carwhere";
 		String hostSMTPpwd = "behllwyqgfsiamov";
 		
-		// º¸³»´Â »ç¶÷ EMail, Á¦¸ñ, ³»¿ë
+		// ë³´ë‚´ëŠ” ì‚¬ëŒ EMail, ì œëª©, ë‚´ìš©
 		String fromEmail = "2carwhere@gmail.com";
 		String fromName = "Minha_Song";
 		String subject = "";
 		String msg = "";
 		
 		if(div.equals("findpw")) {
-			subject = "ÀÌÂ÷¾î¶§ È¸¿ø´Ô ¾ÆÀÌµğ ÀÔ´Ï´Ù.";
+			subject = "ì´ì°¨ì–´ë•Œ íšŒì›ë‹˜ ì•„ì´ë”” ì…ë‹ˆë‹¤.";
 			msg += "<div align='center' style='font-family:verdana'>";
-			msg += "<h2><p> ¾È³çÇÏ¼¼¿ä. <br>";
-			msg += mbean.getName() + "´ÔÀÇ ¾ÆÀÌµğ Á¤º¸ ÀÔ´Ï´Ù.</p></h2>";
-			msg += "<p style='font-size : 18px;'> ÀÌÂ÷¾î¶§ ¾ÆÀÌµğ : ";
+			msg += "<h2><p> ì•ˆë…•í•˜ì„¸ìš”. <br>";
+			msg += mbean.getName() + "ë‹˜ì˜ ì•„ì´ë”” ì •ë³´ ì…ë‹ˆë‹¤.</p></h2>";
+			msg += "<p style='font-size : 18px;'> ì´ì°¨ì–´ë•Œ ì•„ì´ë”” : ";
 			msg += mbean.getId() + "</p></div>";
 		}
 		
-		System.out.println("±¸±Û¸ŞÀÏ PW: "+hostSMTPpwd);
+		System.out.println("êµ¬ê¸€ë©”ì¼ PW: "+hostSMTPpwd);
 		
-		// ¹Ş´Â »ç¶÷ E-Mail ÁÖ¼Ò
+		// ë°›ëŠ” ì‚¬ëŒ E-Mail ì£¼ì†Œ
 		String mail = mbean.getEmail();
 		try {
 			HtmlEmail email = new HtmlEmail();
@@ -93,7 +93,7 @@ public class MemberFindIdController {
 			email.setCharset(charSet);
 			email.setSSLOnConnect(true);
 			email.setHostName(hostSMTP);
-			email.setSmtpPort(465); //³×ÀÌ¹ö 587 // ±¸±Û 465
+			email.setSmtpPort(465); //ë„¤ì´ë²„ 587 // êµ¬ê¸€ 465
 			
 			email.setAuthentication(hostSMTPid, hostSMTPpwd);
 			email.addTo(mail, charSet);
@@ -102,7 +102,7 @@ public class MemberFindIdController {
 			email.setHtmlMsg(msg);
 			email.send();
 		} catch (Exception e) {
-			System.out.println("¸ŞÀÏ¹ß¼Û ½ÇÆĞ : " + e);
+			System.out.println("ë©”ì¼ë°œì†¡ ì‹¤íŒ¨ : " + e);
 		}
 	}
 	 

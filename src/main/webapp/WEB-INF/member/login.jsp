@@ -20,7 +20,7 @@
 	//     typeof(Storage) !== 'undefined' && sessionStorage.setItem('AccessKEY', JSON.stringify(token)); 
 	// };
 
-	/*  window.Kakao.init('c9f0709e1a36c281eef760936156d72a');
+	 window.Kakao.init('c9f0709e1a36c281eef760936156d72a');
 	 console.log(Kakao.isInitialized());
 	 
 	 function kakaoLogin() {
@@ -51,7 +51,7 @@
 	                     
 	                 }
 	             });
-	             // window.location.href='/ex/kakao_login.html' //리다이렉트 되는 코드
+	             window.location.href='/ex/kakao_login.html' //리다이렉트 되는 코드
 	         },
 	         fail: function(error) {
 	             console.log(error);
@@ -61,7 +61,7 @@
 	 
 	 const login = document.querySelector('#kakaoLogin');
 	 login.addEventListener('click', kakaoLogin);
-	 */
+	 
 
 	/*  success: (res)
 
@@ -73,6 +73,8 @@
 	 $('#name').val(name);
 	 $('#email').val(email);
 	 여기에 빈 값이 들어갔기 때문에 컨트롤러에서 안 나왔을 거야 */
+	 
+	 
 </script>
 	
 <title>이차어때 Login</title>
@@ -152,10 +154,11 @@
 					<br><br>
 			        <hr>
 			    </div>
-<!-- 		<table width=500 height=40 align="center"> 카카오 계정 x
+			    
+ 		<table width=500 height=40 align="center"> <!-- 카카오 계정 x -->
 			<tr>
 				<td align="center">
-				카카오 id,email
+				<!-- 카카오 id,email -->
 			      	<input type="hidden" name="name" id="name">
 			      	<input type="hidden" name="email" id="email">
 			      	<a href="javascript:kakaoLogin();">
@@ -164,7 +167,7 @@
 				</td>
 			</tr>
 			
-		</table> -->
+		</table>
 	<br><br><br>
 	</form>
 	

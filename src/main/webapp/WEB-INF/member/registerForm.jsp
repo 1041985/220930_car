@@ -507,7 +507,7 @@ function DaumPostcode() {
 			<td colspan="2">
 			<font color="#ED0000" size="3">※</font> <font size="3">이용약관</font> <br><br>
 			<textarea name="textbox" id="textbox" rows="10" cols="125" class="textbox" style="resize:none;" readonly="readonly">
-제 1장 총칙
+제 1장 총칙 하하하
 
 제 1 조(목적)
 

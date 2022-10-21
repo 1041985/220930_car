@@ -1,6 +1,5 @@
 package member.controller;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
@@ -48,29 +47,29 @@ public class MemberFindPwController {
 		PrintWriter out = response.getWriter();
 		
 		if(memberDao.pwFindIdCheck(member.getId()) == null) {
-			out.print("<script>alert('µî·ÏµÇÁö ¾ÊÀº ¾ÆÀÌµğÀÔ´Ï´Ù.'); history.back(-1);</script>");
+			out.print("<script>alert('ë“±ë¡ë˜ì§€ ì•Šì€ ì•„ì´ë””ì…ë‹ˆë‹¤.'); history.back(-1);</script>");
 			out.close();
 		}
 		
 		else if(!member.getEmail().equals(mb.getEmail())) {
-			out.print("<script>alert('µî·ÏµÇÁö ¾ÊÀº ÀÌ¸ŞÀÏÀÔ´Ï´Ù.'); history.back(-1);</script>");
+			out.print("<script>alert('ë“±ë¡ë˜ì§€ ì•Šì€ ì´ë©”ì¼ì…ë‹ˆë‹¤.'); history.back(-1);</script>");
 			out.close();
 			
 		}
 		else {
-			//ºñ¹Ğ¹øÈ£ °®°í¿À±â
+			//ë¹„ë°€ë²ˆí˜¸ ê°–ê³ ì˜¤ê¸°
 			String pw = "";
 			for (int i = 0; i < 12; i++) {
 				pw += (char) ((Math.random() * 26) + 97);
 			}
 			member.setPw(pw);
-			// ºñ¹Ğ¹øÈ£ º¯°æ
+			// ë¹„ë°€ë²ˆí˜¸ ë³€ê²½
 			memberDao.updatePw(member);
 			
-			// ºñ¹Ğ¹øÈ£ º¯°æ ¸ŞÀÏ ¹ß¼Û
+			// ë¹„ë°€ë²ˆí˜¸ ë³€ê²½ ë©”ì¼ ë°œì†¡
 			sendEmail(member, "findpw");
 			
-			out.print("<script>alert('ÀÌ¸ŞÀÏ·Î ÀÓ½Ã ºñ¹Ğ¹øÈ£¸¦ ¹ß¼ÛÇÏ¿´½À´Ï´Ù.'); location.href='login.mem'</script>");
+			out.print("<script>alert('ì´ë©”ì¼ë¡œ ì„ì‹œ ë¹„ë°€ë²ˆí˜¸ë¥¼ ë°œì†¡í•˜ì˜€ìŠµë‹ˆë‹¤.'); location.href='login.mem'</script>");
 			out.close();
 			
 		}
@@ -81,7 +80,7 @@ public class MemberFindPwController {
 
 	private void sendEmail(MemberBean member, String div) {
 		String charSet = "utf-8";
-		String hostSMTP = "smtp.gmail.com"; //³×ÀÌ¹ö smtp.naver.com //smtp.gmail.com
+		String hostSMTP = "smtp.gmail.com"; //ë„¤ì´ë²„ smtp.naver.com //smtp.gmail.com
 		String hostSMTPid = "2carwhere";
 		String hostSMTPpwd = "behllwyqgfsiamov";
 		
@@ -91,13 +90,13 @@ public class MemberFindPwController {
 		String msg = "";
 		
 		if(div.equals("findpw")) {
-			subject = "ÀÌÂ÷¾î¶§ È¸¿ø´Ô ÀÓ½Ã ºñ¹Ğ¹øÈ£ ¹ß¼Û";
+			subject = "ì´ì°¨ì–´ë•Œ íšŒì›ë‹˜ ì„ì‹œ ë¹„ë°€ë²ˆí˜¸ ë°œì†¡";
 			msg += "<div align='center' font-family:verdana'>";
-			msg += "<h2><p> ¾È³çÇÏ¼¼¿ä. <br>";
-			msg += member.getId() + "´ÔÀÇ ÀÓ½Ã ºñ¹Ğ¹øÈ£ ÀÔ´Ï´Ù.</h2>";
-			msg += "<p> ÀÓ½Ã ºñ¹Ğ¹øÈ£ : ";
+			msg += "<h2><p> ì•ˆë…•í•˜ì„¸ìš”. <br>";
+			msg += member.getId() + "ë‹˜ì˜ ì„ì‹œ ë¹„ë°€ë²ˆí˜¸ ì…ë‹ˆë‹¤.</h2>";
+			msg += "<p> ì„ì‹œ ë¹„ë°€ë²ˆí˜¸ : ";
 			msg += member.getPw() + "</p>";
-			msg += "<p>¡ØÀÓ½Ã ºñ¹Ğ¹øÈ£´Â ½ÃÀÏ ³» º¯°æÇÏ¿© ¾ÈÀüÇÏ°Ô °èÁ¤À» °ü¸®ÇÏ¼¼¿ä.</p></div>";
+			msg += "<p>â€»ì„ì‹œ ë¹„ë°€ë²ˆí˜¸ëŠ” ì‹œì¼ ë‚´ ë³€ê²½í•˜ì—¬ ì•ˆì „í•˜ê²Œ ê³„ì •ì„ ê´€ë¦¬í•˜ì„¸ìš”.</p></div>";
 		}
 		
 		String mail = member.getEmail();
@@ -116,7 +115,7 @@ public class MemberFindPwController {
 			email.setHtmlMsg(msg);
 			email.send();
 		} catch (Exception e) {
-			System.out.println("¸ŞÀÏ¹ß¼Û ½ÇÆĞ : " + e);
+			System.out.println("ë©”ì¼ë°œì†¡ ì‹¤íŒ¨ : " + e);
 		}
 		
 	}

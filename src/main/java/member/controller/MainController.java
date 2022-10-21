@@ -36,14 +36,14 @@ public class MainController {
       List<CategoryBean> comLists = catedao.getComList();
    
 		
-		System.out.println("����");
+		System.out.println("제발");
 		List<CarBean> lists = cdao.selectAllCarInMain();
-System.out.println("�Ƕ�");
+		System.out.println("되라");
 		model.addAttribute("lists", lists);
-      model.addAttribute("modLists", modLists);
-      model.addAttribute("comLists", comLists);
+        model.addAttribute("modLists", modLists);
+        model.addAttribute("comLists", comLists);
       
-      return getPage;
+        return getPage;
    }
    
    

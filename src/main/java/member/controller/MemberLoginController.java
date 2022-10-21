@@ -36,17 +36,18 @@ public class MemberLoginController {
 	public String login(
 			MemberBean member,
 			HttpServletResponse response,HttpServletRequest request,
-			HttpSession session
-			/*@RequestParam("name") String name,
-			@RequestParam("email") String email*/
+			HttpSession session,
+			@RequestParam("name") String name,
+			@RequestParam("email") String email
 			) throws IOException {
-		//alert ³»º¸³»´Âµ¥ ÇÑ±ÛÃ³¸®
+		//alert ë‚´ë³´ë‚´ëŠ”ë° í•œê¸€ì²˜ë¦¬
 		response.setContentType("text/html; charset=UTF-8");
 		
-	/*	System.out.println("Ä«Ä«¿À·Î±×ÀÎ");
-		System.out.println("Ä«Ä«¿ÀÀÌ¸§ : "+name);
-		System.out.println("Ä«Ä«¿ÀÀÌ¸ŞÀÏ : "+email);
-		*/
+		System.out.println("ì¹´ì¹´ì˜¤ë¡œê·¸ì¸");
+		System.out.println("ì¹´ì¹´ì˜¤ì´ë¦„ : "+name);
+		System.out.println("ì¹´ì¹´ì˜¤ì´ë©”ì¼ : "+email);
+		
+		
 		//String kakaoid = request.getParameter("email"); //kakao
 		//member.setId(email); //kakao
 		
@@ -59,33 +60,33 @@ public class MemberLoginController {
 		
 		//MemberBean mb =  memberDao.getKakaoinsert(member.setId(email));
 		
-		PrintWriter writer = response.getWriter(); // ¿¹¿ÜÃ³¸®ÇØ¾ßÇÔ
+		PrintWriter writer = response.getWriter(); // ì˜ˆì™¸ì²˜ë¦¬í•´ì•¼í•¨
 		
 		MemberBean login = memberDao.getMember(member.getId());
 		
 		//if(kakaoid == login) {}
 		
 		if(login == null) {
-			System.out.println("°¡ÀÔÇÏÁö ¾ÊÀº È¸¿ø");
-			writer.println("<script> alert('°¡ÀÔÇÏÁö ¾ÊÀº È¸¿øÀÔ´Ï´Ù'); </script>");
+			System.out.println("ê°€ì…í•˜ì§€ ì•Šì€ íšŒì›");
+			writer.println("<script> alert('ê°€ì…í•˜ì§€ ì•Šì€ íšŒì›ì…ë‹ˆë‹¤'); </script>");
 			writer.flush();
 			return getPage;
 		}
 		else {
 			if(member.getPw().equals(login.getPw())) {
-				System.out.println("°¡ÀÔÇÑ È¸¿ø");
-				session.setAttribute("loginInfo", login); //login ¾È¿¡ ÀÖ´Â ¸ğµç Á¤º¸¸¦ °¡Á®¿È
+				System.out.println("ê°€ì…í•œ íšŒì›");
+				session.setAttribute("loginInfo", login); //login ì•ˆì— ìˆëŠ” ëª¨ë“  ì •ë³´ë¥¼ ê°€ì ¸ì˜´
 				Object destination = session.getAttribute("destination");
 				if (destination != null) {
-					// ¸ñÀûÁö°¡ Á¤ÇØÁø Ã¤·Î ·Î±×ÀÎÀ» ½ÃµµÇÏ´Â °æ¿ì ¸ñÀûÁö·Î ÀÌµ¿
+					// ëª©ì ì§€ê°€ ì •í•´ì§„ ì±„ë¡œ ë¡œê·¸ì¸ì„ ì‹œë„í•˜ëŠ” ê²½ìš° ëª©ì ì§€ë¡œ ì´ë™
 					return destination.toString();
 				} else {
-					// ÀÏ¹İÀûÀÎ ·Î±×ÀÎ ½ÃµµÀÇ °æ¿ì ¸ŞÀÎÆäÀÌÁö·Î ÀÌµ¿
+					// ì¼ë°˜ì ì¸ ë¡œê·¸ì¸ ì‹œë„ì˜ ê²½ìš° ë©”ì¸í˜ì´ì§€ë¡œ ì´ë™
 					return gotoPage;
 				}
 			}
-			else { //ºñ¹øÀÌ ÀÏÄ¡ÇÏÁö ¾ÊÀ»¶§
-				writer.println("<script> alert('ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù'); </script>");
+			else { //ë¹„ë²ˆì´ ì¼ì¹˜í•˜ì§€ ì•Šì„ë•Œ
+				writer.println("<script> alert('ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤'); </script>");
 				writer.flush();
 				return getPage;
 			}

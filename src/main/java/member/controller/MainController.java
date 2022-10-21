@@ -1,9 +1,6 @@
 package member.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,7 +13,7 @@ import car.model.CarBean;
 import car.model.CarDao;
 import category.model.CategoryBean;
 import category.model.CategoryDao;
-import utility2.Paging2;
+
 
 @Controller
 public class MainController {
@@ -39,9 +36,9 @@ public class MainController {
       List<CategoryBean> comLists = catedao.getComList();
    
 		
-		System.out.println("Á¦¹ß");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½");
 		List<CarBean> lists = cdao.selectAllCarInMain();
-System.out.println("µÇ¶ó");
+System.out.println("ï¿½Ç¶ï¿½");
 		model.addAttribute("lists", lists);
       model.addAttribute("modLists", modLists);
       model.addAttribute("comLists", comLists);
